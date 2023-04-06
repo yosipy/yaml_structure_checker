@@ -1,9 +1,6 @@
-name: Ruby
+name: Ruby CI
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
   pull_request:
 
@@ -14,14 +11,14 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - '3.2.2'
+          - "3.2.2"
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run rspec
+        run: bundle exec rspec
