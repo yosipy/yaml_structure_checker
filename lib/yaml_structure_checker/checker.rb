@@ -37,7 +37,7 @@ module YamlStructureChecker
     def test_yaml(path, envs)
       puts "\n# #{path}"
 
-      yaml = YAML.load_file(path, aliases: true)
+      yaml = Loader.yaml_load_file(path)
 
       nested_keys = Converter.hash_to_nested_keys(yaml)
 

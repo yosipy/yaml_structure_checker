@@ -10,7 +10,7 @@ module YamlStructureChecker
     def initialize(settings_path)
       hash =
         begin
-          YAML.safe_load_file(settings_path)
+          Loader.yaml_safe_load_file(settings_path)
         rescue => e
           puts "Not found YamlStructureChecker's settings file."
           raise e
@@ -22,6 +22,22 @@ module YamlStructureChecker
       self.skip_paths = (hash['skip_paths'] || []).freeze
 
       exist_files?(self.skip_paths)
+    end
+
+    def self.yaml_load_file(path)
+      if RUBY_VERSION > '3.1.0'
+        YAML.load_file(path, aliases: true)
+      else
+        YAML.load_file(path)
+      end
+    end
+
+    def self.yaml_safe_load_file(path)
+      if RUBY_VERSION > '3.1.0'
+        YAML.safe_load_file(path)
+      else
+        YAML.load_file(path)
+      end
     end
 
     def target_paths
