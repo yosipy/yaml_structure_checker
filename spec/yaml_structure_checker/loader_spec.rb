@@ -16,6 +16,36 @@ RSpec.describe YamlStructureChecker::Loader do
     end
   end
 
+  describe 'self.yaml_load_file' do
+    it 'Convert yaml file to hash' do
+      expect(
+        YamlStructureChecker::Loader.yaml_load_file(
+          'spec/fixtures/loader/yaml_structure_checker.yml'
+        )
+      ).to eq({
+        'envs' => %w[development test integration production],
+        'exclude_patterns' => %w[spec/fixtures/loader/locales/**/*.yml],
+        'include_patterns' => %w[spec/fixtures/loader/**/*.yml],
+        'skip_paths' => %w[spec/fixtures/loader/skip.yml]
+      })
+    end
+  end
+
+  describe 'self.yaml_safe_load_file' do
+    it 'Convert yaml file to hash' do
+      expect(
+        YamlStructureChecker::Loader.yaml_safe_load_file(
+          'spec/fixtures/loader/yaml_structure_checker.yml'
+        )
+      ).to eq({
+        'envs' => %w[development test integration production],
+        'exclude_patterns' => %w[spec/fixtures/loader/locales/**/*.yml],
+        'include_patterns' => %w[spec/fixtures/loader/**/*.yml],
+        'skip_paths' => %w[spec/fixtures/loader/skip.yml]
+      })
+    end
+  end
+
   describe '#target_paths' do
     it do
       expect(loader.target_paths).to eq(
