@@ -10,7 +10,7 @@ module YamlStructureChecker
       self.ng_paths = []
     end
 
-    def test_yamls(settings_path='config/yaml_structure_checker.yml')
+    def test_yamls(settings_path)
       print_start_title
 
       loader = Loader.new(settings_path)
@@ -23,10 +23,7 @@ module YamlStructureChecker
 
       print_result_title
 
-      puts "NG paths:"
-      self.ng_paths.each do |ng_path|
-        puts "  #{ng_path}"
-      end
+      print_ng_paths(self.ng_paths)
 
       puts "Total count: #{loader.total_count}"
       puts "Exclude count: #{loader.exclude_paths.size}"
@@ -127,6 +124,10 @@ module YamlStructureChecker
 
     def print_exclude_paths(exclude_paths)
       puts "Exclude paths:"
+      if(exclude_paths.size == 0)
+        puts "  nothing"
+      end
+
       exclude_paths.each do |exclude_path|
         puts "  #{exclude_path}"
       end
@@ -135,8 +136,24 @@ module YamlStructureChecker
 
     def print_skip_paths(skip_paths)
       puts "Skip paths:"
+      if(skip_paths.size == 0)
+        puts "  nothing"
+      end
+
       skip_paths.each do |skip_path|
         puts "  #{skip_path}"
+      end
+      puts "\n"
+    end
+
+    def print_ng_paths(ng_paths)
+      puts "NG paths:"
+      if(ng_paths.size == 0)
+        puts "  nothing"
+      end
+
+      ng_paths.each do |ng_path|
+        puts "  #{ng_path}"
       end
       puts "\n"
     end
