@@ -1,0 +1,6 @@
+include_patterns:
+  - spec/fixtures/runner/target/**/*.yml
+envs:
+  - development
+  - test
+  - production
