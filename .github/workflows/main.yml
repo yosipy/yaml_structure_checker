@@ -21,7 +21,7 @@ jobs:
       - name: Run rspec
         run: bundle exec rspec
       - Yaml structure checker
-        run : |
-          bundle exec ruby -e "require 'yaml_structure_checker';\
-          YamlStructureChecker::Runner.invoke(\
+        run : >
+          bundle exec ruby -e "require 'yaml_structure_checker';
+          YamlStructureChecker::Runner.invoke(
           'spec/fixtures/checker/config/yaml_structure_checker_for_ci.yml')"
