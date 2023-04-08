@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe YamlStructureChecker::Converter do
-  let(:loader) do
-    YamlStructureChecker::Converter
-  end
-
   describe 'self.hash_to_nested_keys' do
     let!(:hash) do
       {
