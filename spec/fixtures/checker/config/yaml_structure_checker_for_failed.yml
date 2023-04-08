@@ -1,0 +1,6 @@
+include_patterns:
+  - spec/fixtures/checker/target/failed/diff.yml
+envs:
+  - development
+  - test
+  - production

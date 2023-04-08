@@ -56,7 +56,7 @@ RSpec.describe YamlStructureChecker::Loader do
     end
 
     context 'When there is a path for a file that does not exist' do
-      it 'Raise error' do
+      it 'Raise exceptions' do
         expect {
           loader
             .send(:exist_files?, %w[spec/fixtures/loader/not_exist.yml])

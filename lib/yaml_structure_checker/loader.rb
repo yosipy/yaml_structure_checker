@@ -7,10 +7,10 @@ module YamlStructureChecker
                   :envs,
                   :skip_paths
 
-    def initialize(file_path='config/yaml_structure_checker.yml')
-      hash = 
+    def initialize(settings_path)
+      hash =
         begin
-          YAML.safe_load_file(file_path)
+          YAML.safe_load_file(settings_path)
         rescue => e
           puts "Not found YamlStructureChecker's settings file."
           raise e

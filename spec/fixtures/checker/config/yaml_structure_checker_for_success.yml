@@ -1,0 +1,6 @@
+include_patterns:
+  - spec/fixtures/checker/target/success/same.yml
+envs:
+  - development
+  - test
+  - production
