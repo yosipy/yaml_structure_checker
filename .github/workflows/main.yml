@@ -9,7 +9,6 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - "2.6.10"
           - "3.2.2"
 
     steps:
