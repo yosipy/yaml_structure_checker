@@ -5,9 +5,9 @@ RSpec.describe YamlStructureChecker::Checker do
     YamlStructureChecker::Checker.new
   end
 
-  describe '#run' do
-    let(:run) do
-      checker.run(settings_path) rescue nil
+  describe '#test_yamls' do
+    let(:test_yamls) do
+      checker.test_yamls(settings_path) rescue nil
     end
     let(:settings_path) do
       'spec/fixtures/checker/config/yaml_structure_checker.yml'
@@ -17,7 +17,7 @@ RSpec.describe YamlStructureChecker::Checker do
       exclude_paths = %w[
         spec/fixtures/checker/target/exclude/example.yml
       ]
-      expect { run }.to output(
+      expect { test_yamls }.to output(
         /Exclude paths:\n  #{exclude_paths.join('\n  ')}/
       ).to_stdout
     end
@@ -26,7 +26,7 @@ RSpec.describe YamlStructureChecker::Checker do
       skip_paths = %w[
         spec/fixtures/checker/target/skip/example.yml
       ]
-      expect { run }.to output(
+      expect { test_yamls }.to output(
         /Skip paths:\n  #{skip_paths.join('\n  ')}/
       ).to_stdout
     end
@@ -36,7 +36,7 @@ RSpec.describe YamlStructureChecker::Checker do
         spec/fixtures/checker/target/failed/alias.yml
         spec/fixtures/checker/target/failed/diff.yml
       ]
-      expect { run }.to output(
+      expect { test_yamls }.to output(
         /NG paths:\n  #{ng_paths.join('\n  ')}/
       ).to_stdout
     end
@@ -48,7 +48,7 @@ RSpec.describe YamlStructureChecker::Checker do
       ok = 'OK count: 2'
       ng = 'NG count: 2'
 
-      expect { run }.to output(
+      expect { test_yamls }.to output(
         /#{total}\n#{exclude}\n#{skip}\n#{ok}\n#{ng}/
       ).to_stdout
     end
@@ -61,7 +61,7 @@ RSpec.describe YamlStructureChecker::Checker do
 
         it 'Not raise exceptions' do
           expect {
-            checker.run(settings_path)
+            checker.test_yamls(settings_path)
           }.not_to raise_error
         end
       end
@@ -73,7 +73,7 @@ RSpec.describe YamlStructureChecker::Checker do
 
         it 'Raise exceptions' do
           expect {
-            checker.run(settings_path)
+            checker.test_yamls(settings_path)
           }.to raise_error(YamlStructureChecker::Errors::StructureError)
         end
       end

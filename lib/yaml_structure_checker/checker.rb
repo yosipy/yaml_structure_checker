@@ -10,7 +10,7 @@ module YamlStructureChecker
       self.ng_paths = []
     end
 
-    def run(settings_path='config/yaml_structure_checker.yml')
+    def test_yamls(settings_path='config/yaml_structure_checker.yml')
       print_start_title
 
       loader = Loader.new(settings_path)
