@@ -1,0 +1,12 @@
+development: &default
+  a:
+    a1: "a1"
+  b: "b"
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  a:
+    dummy_a1: "dummy_a1"

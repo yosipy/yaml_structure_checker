@@ -1,0 +1,10 @@
+include_patterns:
+  - spec/fixtures/checker/target/**/*.yml
+exclude_patterns:
+  - spec/fixtures/checker/target/exclude/**/*.yml
+envs:
+  - development
+  - test
+  - production
+skip_paths:
+  - spec/fixtures/checker/target/skip/example.yml

@@ -1,0 +1,14 @@
+development:
+  a:
+    a1: "a1"
+  b: "b"
+
+test:
+  a:
+    a1: "a1"
+  b: "b"
+
+production:
+  a:
+    a1: "a1"
+  b: "b"
