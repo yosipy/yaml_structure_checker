@@ -44,12 +44,12 @@ module YamlStructureChecker
       @target_paths ||=
         begin
           include_paths = file_paths(self.include_patterns)
-          (include_paths - exclude_paths - self.skip_paths).freeze
+          (include_paths - exclude_paths - self.skip_paths).sort.freeze
         end
     end
 
     def exclude_paths
-      @exclude_paths ||= file_paths(exclude_patterns).freeze
+      @exclude_paths ||= file_paths(exclude_patterns).sort.freeze
     end
 
     def total_count
@@ -63,7 +63,7 @@ module YamlStructureChecker
       patterns.each do |pattern|
         paths += Dir.glob(pattern)
       end
-      paths.uniq
+      paths.uniq.sort
     end
 
     def exist_files?(paths)
