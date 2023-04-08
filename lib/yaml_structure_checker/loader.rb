@@ -16,10 +16,10 @@ module YamlStructureChecker
           raise e
         end
 
-      self.include_patterns = hash['include_patterns']
-      self.exclude_patterns = hash['exclude_patterns'] || []
-      self.envs = hash['envs']
-      self.skip_paths = hash['skip_paths'] || []
+      self.include_patterns = hash['include_patterns'].freeze
+      self.exclude_patterns = (hash['exclude_patterns'] || []).freeze
+      self.envs = hash['envs'].freeze
+      self.skip_paths = (hash['skip_paths'] || []).freeze
 
       exist_files?(self.skip_paths)
     end
@@ -28,12 +28,16 @@ module YamlStructureChecker
       @target_paths ||=
         begin
           include_paths = file_paths(self.include_patterns)
-          include_paths - exclude_paths - self.skip_paths
+          (include_paths - exclude_paths - self.skip_paths).freeze
         end
     end
 
     def exclude_paths
-      @exclude_paths ||= file_paths(exclude_patterns)
+      @exclude_paths ||= file_paths(exclude_patterns).freeze
+    end
+
+    def total_count
+      target_paths.size + exclude_paths.size + skip_paths.size
     end
 
     private

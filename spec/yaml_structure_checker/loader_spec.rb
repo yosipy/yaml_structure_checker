@@ -39,6 +39,12 @@ RSpec.describe YamlStructureChecker::Loader do
     end
   end
 
+  describe '#total_count' do
+    it 'return total count of target_paths & exclude_paths & skip_paths' do
+      expect(loader.total_count).to eq(6)
+    end
+  end
+
   describe '#exist_files?' do
     context 'When the path where all files exist' do
       it 'Return true' do
