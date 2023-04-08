@@ -1,0 +1,11 @@
+include_patterns:
+  - spec/fixtures/loader/**/*.yml
+exclude_patterns:
+  - spec/fixtures/loader/locales/**/*.yml
+envs:
+  - development
+  - test
+  - integration
+  - production
+skip_paths:
+  - spec/fixtures/loader/skip.yml
