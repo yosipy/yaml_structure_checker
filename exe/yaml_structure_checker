@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml_structure_checker'
+
+if !ARGV.empty?
+  settings_path = ARGV.first
+end
+
+YamlStructureChecker::Runner.invoke(settings_path)
