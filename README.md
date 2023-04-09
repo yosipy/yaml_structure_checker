@@ -2,17 +2,69 @@
 
 This Gem can detect that the keys in the yaml file do not match for each environment.
 
+This prevents cases where errors occur only in the production environment.
+
+The following is an example
+
+```yaml
+# This file is OK.
+development: &default
+  db:
+    username: username
+    password: password
+
+test:
+  <<: *default
+
+integration:
+  <<: *default
+
+production:
+  <<: *default
+  db:
+    username: <%= ENV['DATABASE_UERNAME'] %>
+    password: <%= ENV['DATABASE_PASSWORD'] %>
+```
+
+```yaml
+# This file is NG. Raises an exception.
+development: &default
+  db:
+    username: username
+    password: password
+
+test:
+  <<: *default
+
+integration:
+  <<: *default
+
+production:
+  <<: *default
+  db:
+    username: <%= ENV['DATABASE_UERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+```
+
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
+```ruby
+gem 'yaml_structure_checker'
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+And then execute:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+```bash
+$ bundle
+```
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Or install it yourself as:
+
+```bash
+$ gem install yaml_structure_checker
+```
 
 ## Usage
 
