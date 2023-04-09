@@ -1,8 +1,6 @@
-# YamlStructureChecker
+# Yaml structure checker
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yaml_structure_checker`. To experiment with that code, run `bin/console` for an interactive prompt.
+This Gem can detect that the keys in the yaml file do not match for each environment.
 
 ## Installation
 
@@ -18,7 +16,108 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+### Add configuration file
+
+Add the configuration file `config/yaml_structure_checker.yml`.
+
+Yaml structure checker loads `config/yaml_structure_checker.yml` by default.
+
+An example follows
+
+```yaml
+# config/yaml_structure_checker.yml
+include_patterns:
+  - config/**/*.yml
+exclude_patterns:
+  - config/locales/**/*.yml
+envs:
+  - development
+  - test
+  - integration
+  - production
+skip_paths:
+  - config/gcp.yml
+```
+
+|                  |                                                                           |
+| ---------------- | ------------------------------------------------------------------------- |
+| include_patterns | Specifies the pattern of files to inspect for keys.                       |
+| exclude_patterns | Specifies patterns to exclude from include_patterns.                      |
+| envs             | Specifies the environment in which comparisons will be made by the check. |
+| skip_paths       | Specifies file paths to exclude from include_patterns.                    |
+|                  |                                                                           |
+
+### Check yaml files
+
+Run the `yaml_structure_checker` command to check your Yaml files.
+
+```bash
+$ bundle exec yaml_structure_checker
+
+#################################
+#     Yaml Structure Check      #
+#################################
+
+Exclude paths:
+  spec/fixtures/checker/target/exclude/example.yml
+  spec/fixtures/checker/target/failed/alias.yml
+  spec/fixtures/checker/target/failed/diff.yml
+
+Skip paths:
+  spec/fixtures/checker/target/skip/example.yml
+
+
+# spec/fixtures/checker/target/success/alias.yml
+Result: OK
+
+
+# spec/fixtures/checker/target/success/same.yml
+Result: OK
+
+#################################
+#  Yaml Structure Check Result  #
+#################################
+
+NG paths:
+  nothing
+
+Total count: 6
+Exclude count: 3
+Skip count: 1
+OK count: 2
+NG count: 0
+```
+
+If you want to use a configuration file other than `config/yaml_structure_checker.yml`, do the following
+
+```bash
+$ bundle exec yaml_structure_checker other_yaml_faile_path.yml
+```
+
+### Run on CI
+
+It is recommended to run it through CI.
+
+The following is an example of Github Actions.
+
+```yaml
+name: CI
+
+on: push
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.2.2
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bundle install
+        run: bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - name: Yaml structure checker
+        run: bundle exec yaml_structure_checker
+```
 
 ## Development
 
