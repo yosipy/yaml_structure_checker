@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["yosipy"]
   spec.email = ["yosi.contact@gmail.com"]
 
-  spec.summary = "This Gem verifies that the structure of the Yaml file is consistent for each environment."
-  # spec.description = ""
+  spec.summary = "Yaml structure checker in ruby"
+  spec.description = "This Gem can detect that the keys in the yaml file do not match for each environment. This prevents cases where errors occur only in the production environment."
   spec.homepage = "https://github.com/yosipy/yaml_structure_checker"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
