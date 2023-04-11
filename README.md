@@ -6,6 +6,8 @@ This Gem can detect that the keys in the yaml file do not match for each environ
 
 This prevents cases where errors occur only in the production environment.
 
+It works powerfully in Rails, but of course it can be used in other applications as well.
+
 The following is an example
 
 ```yaml
