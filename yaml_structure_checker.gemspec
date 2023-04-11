@@ -4,11 +4,11 @@ require_relative "lib/yaml_structure_checker/version"
 
 Gem::Specification.new do |spec|
   spec.name = "yaml_structure_checker"
-  spec.version = YamlStructureChecker::VERSION
+  spec.version = YAMLStructureChecker::VERSION
   spec.authors = ["yosipy"]
   spec.email = ["yosi.contact@gmail.com"]
 
-  spec.summary = "Yaml structure checker in ruby"
+  spec.summary = "YAML structure checker in ruby"
   spec.description = "This Gem can detect that the keys in the yaml file do not match for each environment. This prevents cases where errors occur only in the production environment."
   spec.homepage = "https://github.com/yosipy/yaml_structure_checker"
   spec.license = "MIT"

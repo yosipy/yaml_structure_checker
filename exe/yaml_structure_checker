@@ -7,4 +7,4 @@ if !ARGV.empty?
   settings_path = ARGV.first
 end
 
-YamlStructureChecker::Runner.invoke(settings_path)
+YAMLStructureChecker::Runner.invoke(settings_path)

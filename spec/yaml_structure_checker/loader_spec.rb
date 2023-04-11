@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-RSpec.describe YamlStructureChecker::Loader do
+RSpec.describe YAMLStructureChecker::Loader do
   let(:loader) do
-    YamlStructureChecker::Loader.new('spec/fixtures/loader/yaml_structure_checker.yml')
+    YAMLStructureChecker::Loader.new('spec/fixtures/loader/yaml_structure_checker.yml')
   end
 
   describe '#initialize' do
-    it 'Loaded Yaml values' do
+    it 'Loaded YAML values' do
       expect(loader.include_patterns).to eq(%w[spec/fixtures/loader/**/*.yml])
       expect(loader.exclude_patterns).to eq(%w[spec/fixtures/loader/locales/**/*.yml])
       expect(loader.envs).to eq(
@@ -19,7 +19,7 @@ RSpec.describe YamlStructureChecker::Loader do
   describe 'self.yaml_load_file' do
     it 'Convert yaml file to hash' do
       expect(
-        YamlStructureChecker::Loader.yaml_load_file(
+        YAMLStructureChecker::Loader.yaml_load_file(
           'spec/fixtures/loader/yaml_structure_checker.yml'
         )
       ).to eq({
@@ -34,7 +34,7 @@ RSpec.describe YamlStructureChecker::Loader do
   describe 'self.yaml_safe_load_file' do
     it 'Convert yaml file to hash' do
       expect(
-        YamlStructureChecker::Loader.yaml_safe_load_file(
+        YAMLStructureChecker::Loader.yaml_safe_load_file(
           'spec/fixtures/loader/yaml_structure_checker.yml'
         )
       ).to eq({
@@ -90,7 +90,7 @@ RSpec.describe YamlStructureChecker::Loader do
         expect {
           loader
             .send(:exist_files?, %w[spec/fixtures/loader/not_exist.yml])
-        }.to raise_error(YamlStructureChecker::Errors::LoaderError)
+        }.to raise_error(YAMLStructureChecker::Errors::LoaderError)
       end
     end
   end

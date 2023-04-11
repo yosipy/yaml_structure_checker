@@ -1,4 +1,4 @@
-module YamlStructureChecker
+module YAMLStructureChecker
   class Runner
     def self.invoke(settings_path)
       if settings_path.nil?

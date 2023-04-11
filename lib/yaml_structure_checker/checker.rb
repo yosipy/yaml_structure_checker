@@ -1,4 +1,4 @@
-module YamlStructureChecker
+module YAMLStructureChecker
   class Checker
     attr_accessor :ok_count,
                   :ng_count,
@@ -110,14 +110,14 @@ module YamlStructureChecker
 
     def print_start_title
       puts "#################################"
-      puts "#     Yaml Structure Check      #"
+      puts "#     YAML Structure Check      #"
       puts "#################################"
       puts "\n"
     end
 
     def print_result_title
       puts "#################################"
-      puts "#  Yaml Structure Check Result  #"
+      puts "#  YAML Structure Check Result  #"
       puts "#################################"
       puts "\n"
     end

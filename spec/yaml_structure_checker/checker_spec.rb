@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe YamlStructureChecker::Checker do
+RSpec.describe YAMLStructureChecker::Checker do
   let(:checker) do
-    YamlStructureChecker::Checker.new
+    YAMLStructureChecker::Checker.new
   end
 
   describe '#test_yamls' do
@@ -74,7 +74,7 @@ RSpec.describe YamlStructureChecker::Checker do
         it 'Raise exceptions' do
           expect {
             checker.test_yamls(settings_path)
-          }.to raise_error(YamlStructureChecker::Errors::StructureError)
+          }.to raise_error(YAMLStructureChecker::Errors::StructureError)
         end
       end
     end
