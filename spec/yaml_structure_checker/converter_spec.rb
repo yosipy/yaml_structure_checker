@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe YamlStructureChecker::Converter do
+RSpec.describe YAMLStructureChecker::Converter do
   describe 'self.hash_to_nested_keys' do
     let!(:hash) do
       {
@@ -27,7 +27,7 @@ RSpec.describe YamlStructureChecker::Converter do
 
     it 'Returns the nested structure of keys as an array' do
       expect(
-        YamlStructureChecker::Converter.hash_to_nested_keys(hash)
+        YAMLStructureChecker::Converter.hash_to_nested_keys(hash)
       ).to eq(
         [
           %w[development x],
@@ -56,7 +56,7 @@ RSpec.describe YamlStructureChecker::Converter do
 
     it 'Returns a hash of nested_keys grouped by environment' do
       expect(
-        YamlStructureChecker::Converter
+        YAMLStructureChecker::Converter
           .nested_keys_to_nested_keys_each_env(
             nested_keys,
             envs,

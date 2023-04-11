@@ -1,6 +1,6 @@
 ![thumbnail](yaml_structure_checker.png)
 
-# Yaml structure checker
+# YAML structure checker
 
 This Gem can detect that the keys in the yaml file do not match for each environment.
 
@@ -74,7 +74,7 @@ $ gem install yaml_structure_checker
 
 Add the configuration file `config/yaml_structure_checker.yml`.
 
-Yaml structure checker loads `config/yaml_structure_checker.yml` by default.
+YAML structure checker loads `config/yaml_structure_checker.yml` by default.
 
 An example follows
 
@@ -103,13 +103,13 @@ skip_paths:
 
 ### Check yaml files
 
-Run the `yaml_structure_checker` command to check your Yaml files.
+Run the `yaml_structure_checker` command to check your YAML files.
 
 ```bash
 $ bundle exec yaml_structure_checker
 
 #################################
-#     Yaml Structure Check      #
+#     YAML Structure Check      #
 #################################
 
 Exclude paths:
@@ -129,7 +129,7 @@ Result: OK
 Result: OK
 
 #################################
-#  Yaml Structure Check Result  #
+#  YAML Structure Check Result  #
 #################################
 
 NG paths:
@@ -169,7 +169,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Bundle install
         run: bundle install --path=vendor/bundle --jobs 4 --retry 3
-      - name: Yaml structure checker
+      - name: YAML structure checker
         run: bundle exec yaml_structure_checker
 ```
 
@@ -195,4 +195,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the YamlStructureChecker project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/yaml_structure_checker/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the YAMLStructureChecker project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/yaml_structure_checker/blob/master/CODE_OF_CONDUCT.md).

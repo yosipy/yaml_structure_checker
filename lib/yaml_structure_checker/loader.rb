@@ -1,6 +1,6 @@
 require 'yaml'
 
-module YamlStructureChecker
+module YAMLStructureChecker
   class Loader
     attr_accessor :include_patterns,
                   :exclude_patterns,
@@ -12,7 +12,7 @@ module YamlStructureChecker
         begin
           Loader.yaml_safe_load_file(settings_path)
         rescue => e
-          puts "Not found YamlStructureChecker's settings file."
+          puts "Not found YAMLStructureChecker's settings file."
           raise e
         end
 
@@ -69,7 +69,7 @@ module YamlStructureChecker
     def exist_files?(paths)
       paths.each do |path|
         unless File.exist?(path)
-          raise YamlStructureChecker::Errors::LoaderError, "Not found '#{path}'"
+          raise YAMLStructureChecker::Errors::LoaderError, "Not found '#{path}'"
         end
       end
 

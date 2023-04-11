@@ -1,4 +1,4 @@
-module YamlStructureChecker
+module YAMLStructureChecker
   class Converter
     # [example]
     # args:

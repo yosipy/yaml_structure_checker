@@ -21,7 +21,7 @@ jobs:
           bundler-cache: true
       - name: Run rspec
         run: bundle exec rspec
-      - name: Yaml structure checker
+      - name: YAML structure checker
         run: >
           bundle exec ruby exe/yaml_structure_checker
           spec/fixtures/checker/config/yaml_structure_checker_for_ci.yml

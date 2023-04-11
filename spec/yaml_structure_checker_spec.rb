@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe YamlStructureChecker do
+RSpec.describe YAMLStructureChecker do
   it "has a version number" do
-    expect(YamlStructureChecker::VERSION).not_to be nil
+    expect(YAMLStructureChecker::VERSION).not_to be nil
   end
 end
