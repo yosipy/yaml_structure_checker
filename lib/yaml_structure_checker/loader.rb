@@ -25,7 +25,7 @@ module YAMLStructureChecker
     end
 
     def self.yaml_load_file(path)
-      if RUBY_VERSION > '3.1.0'
+      if Psych::VERSION > '4.0.0'
         YAML.load_file(path, aliases: true)
       else
         YAML.load_file(path)
@@ -33,7 +33,7 @@ module YAMLStructureChecker
     end
 
     def self.yaml_safe_load_file(path)
-      if RUBY_VERSION > '3.1.0'
+      if Psych::VERSION > '4.0.0'
         YAML.safe_load_file(path)
       else
         YAML.load_file(path)
